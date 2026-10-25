@@ -1,0 +1,110 @@
+1.CASE OVERVIEW:
+ INCIDENT TYPE: suspicious login activity 
+ CATEGORY: authentication security 
+ ROLE: junior SOC analyst
+SEVERITY: undetermined - further inestigation required 
+STATUS: under investigation 
+ENVIRONMENT : simulated security operations center (SOC)
+
+2.OBJECTIVE :
+ the objective of this investigation is to analyze authentication logs, identify unusual login 
+patterns, assess potential account compromise ,and recommend appropiate follow-up actions based 
+on the available evidence .
+
+3. SCENARIO DESCRIPTION :
+ Northstar Solution is a fictional organization. Its security monitoring system recorded multiple authentication 
+events associated with the user account Maria.s 
+The events included succesful logins from two different IP addresses , a failed authentication attempt 
+and a subsequent successful login. 
+The purpose of this investigation is to determine whether the activity may indicate unauthorized access
+
+4. EVIDENCE COLLECTE:
+ TIME  USERNAME   SOURCE IP       RESULT 
+ 08:12  maria.s   198.51.100.24   SUCCESSFUL 
+08:14   maria.s   198.51.100.24   SUCCESSFUL 
+08:17   maria.s   203.0.113.77    SUCCESSFUL 
+08:19   maria.s   203.0.113.77    FAILED
+08:20   maria.s   203.0.113.77    SUCCESSFUL
+NOTE: the IP addresses belong to ranges reserved for documentation and are used here as simulted data 
+
+5.KEY OBSERVATIONS:
+  -two successful login events originated from 198.51.100.24
+  -a succesful login from a different IP address , 203.0.113.77, ocurred three minutes after the second event 
+  -a failed authentication attempt was recorded from the second IP address 
+  -another succesful login ocurred one minute after the failed attempt 
+  -the available logs do not include device fingerprints, verified geographic locations, MFA results, or 
+   postauthentication activity.
+
+6.AMALYSIS AND FINDIGS:
+ the change in source IP address and the sequence of authentication events warrant sequence further
+ ivestigation 
+the combination of a successful login, a failed attempt, and another successful login from the same 
+unfamiliar IP address may indicate suspicious authentication activity 
+however, these event do not independently prove that the account was compromised. Legitimate explanations 
+may include a change in network connection, VPN usage , or an incorrect password entry .
+the current evidence does not establish whether the second IP address was associated with the user's 
+normal activity or whether an unauthorized person accessed the account 
+
+7.INESTIGATION STEPS:
+the following actions are recommended :
+ -VERIFY THE SOURCE IP ADDRESSES:
+  review available network and authentication records to determine whether the IP addresses are associated
+  with expected user activity.
+ -REVIEW LOGIN LOCATIONS AND DEVICES:
+  compare device information and approximate locations against the user's established login history 
+ -VERIFY THE ACTIVITY WITH THE USER:
+  determine whether the user recognizes the login events, following the organization's verification procedures 
+ -EXAMINE MFA LOGS: 
+  multifactor authentication was requested, completed, denied, or bypassed.
+ -REVIEW POST-AUTHENTICATION ACTIVITY:
+  investigate access to sensitive resources, unusual downloads, privilege changes, and modifications 
+  to account settings 
+-SEARCH FOR RELATED EVENTS:
+ determine whether the second IP address was involved in other suspicious login attempts or targeted 
+ additional accounts.
+-CORRELATE SECURITY LOGS:
+ timestamps and relevant events across available systems to establish a more complete timeline 
+
+8.RECOMMENDED RESPONSE:
+ If additional evidence indicates unauthorized access, the security team should follow the organization's
+ incident response procedures
+
+POTENTIAL RESPONSE ACTIONS INCLUDE:
+-revoking active sessions when apprpiate
+-resetting the user's credentials if compromise is suspected or confirmed
+-reviewing anf forcing multifactor authentication 
+-temporarily restricting the account when necessary to prevent further unauthorized access.
+-preserving relevant logs and documenting findings
+-escalating the case to the appropiate security team if the evidence supports a potential compromise 
+Any containment action should be proportionate to the assessed rosk and consistent with organizational policy 
+
+9.PRELIMINARY ASSESSMENT:
+ FINDING: suspicious authentication activty requiring further investigation 
+ASSESSMENT: inconclusive 
+ the observed change in source IP address and the sequence os successful and failed authentication events 
+ justify additional inestigation. However, the available evidence is insufficient to confirm a brute force
+attack , malicious activity, or account compromise.
+NO definitve attribution can be made based on the current logs 
+
+10.SKILLS DEMONSTRATED:
+-authentication log analysis
+-suspicious login detection 
+-event timeline recontruction 
+-IP address comparison 
+-evidence based reasoning
+-incident triage
+-security investigation documentation 
+-preliminary incident response planning 
+
+11.LEARNING OUTCOMES:
+this lab demonstrates the importance of distinguishing suspicious activity from a confirmed security incident 
+
+A SOC analyst must evaluate authentication patterns, identify missing evidence, investigate alternative 
+explanations, and make recommendations supported by the available data.
+
+12.DISCLAIMER:
+this report documents a simulated cybersecurity training scenario for educational purprose.
+the IP addresses and events are fictional examples.the findings do not describe a confirmed 
+real world security incident 
+
+ 
